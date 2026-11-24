@@ -12,7 +12,6 @@ import api from '../config/api';
 import { useAuth } from '../context/AuthContext';
 import Colors from '../theme/colors';
 import MaskedField from '../components/MaskedField';
-import UnderDevelopmentView from '../components/UnderDevelopmentView';
 
 export default function DirectoryScreen() {
   const { user } = useAuth();
@@ -22,18 +21,6 @@ export default function DirectoryScreen() {
   const [searched, setSearched] = useState(false);
   const [execTimeMs, setExecTimeMs] = useState(null);
   const [error, setError] = useState('');
-
-  if (user?.baseRole === 'STUDENT') {
-    return (
-      <ScrollView contentContainerStyle={styles.scrollContent}>
-        <UnderDevelopmentView
-          moduleName="Student Campus Directory"
-          phase="Phase 2"
-          description="Public student campus directory is currently restricted pending student privacy consent opt-ins."
-        />
-      </ScrollView>
-    );
-  }
 
   const handleSearch = async () => {
     if (!query.trim()) return;
